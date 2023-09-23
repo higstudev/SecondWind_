@@ -1,6 +1,7 @@
 // get json file and parse into array
 let json_table;
 let json_paragraph;
+let json_procedure;
 
 fetch("./data_paragraph.json")
 .then((res) => res.text())
@@ -13,6 +14,13 @@ fetch("./data_table.json")
 .then((res) => res.text())
 .then((text) => {
     json_table = JSON.parse(text);
+})
+.catch((e) => console.error(e));
+
+fetch("./data_procedure.json")
+.then((res) => res.text())
+.then((text) => {
+    json_procedure = JSON.parse(text);
 })
 .catch((e) => console.error(e));
 
@@ -81,6 +89,7 @@ function openFile(subject, week){
     for (let i = 0; i < json_table[subject][week].length; i++){
         make_table(subject, week, i);
     }
+    make_third(subject, week);
 }
 
 //////////
@@ -238,9 +247,15 @@ function shareWithURL(){
 
 function make_third(subject, week){
     let p3header = document.createElement("h1");
-    p3header.innerHTML = "1. 개요";
+    p3header.innerHTML = "3. 실험 과정";
     let p3body = document.createElement("div");
     p3body.className = "paragraph_body";
     p3.appendChild(p3header);
     p3.appendChild(p3body);
+    let data = json_procedure[subject][week];
+    for (let i = 0; i < data.length; i++){
+        let parag = document.createElement("pre");
+        p3body.appendChild(parag);
+        parag.innerHTML = data[i];
+    }
 }

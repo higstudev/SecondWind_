@@ -24,7 +24,7 @@ element {
 	float: left;
 	
 	height: 100vh;
-	width: 12vw;
+	width: 240px;
 	
 	border-style: solid;
 	border-width: 1px;
@@ -34,7 +34,6 @@ element {
 	margin: 0px;
 	
 	background-color: white;
-	
 }
 
 #center_menu {
@@ -47,7 +46,7 @@ element {
 	display: inline-block;
 	
 	height: 100vh;
-	width: 76vw;
+	width: 75vw;
 	
 	border-style: solid;
 	border-width: 0px;
@@ -60,8 +59,12 @@ element {
 }
 
 #right_menu {
+	display: inline-block;
+	
 	height: 100vh;
 	width: auto;
+	
+	background-color: red;
 }
 
 /*로고*/
@@ -69,7 +72,7 @@ element {
 	position: absolute;
 	bottom: 0%;
 	
-	width: 12vw;
+	width: 240px;
 	height: auto;
 	
 	cursor: pointer;
@@ -195,10 +198,11 @@ table, td, th {
 }
 
 table{
-    width: calc(100% - 20px - 3em);
-	margin: 10px;
+    width: calc(100% - 6em);
     margin-left: 3em;
     margin-right: 3em;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 
@@ -215,7 +219,8 @@ input{
 }
 
 h1{
-    margin-left: 1em;
+    margin-left: 1.2em;
+    margin-top: 1.2em;
 }
 
 p{
@@ -225,6 +230,7 @@ p{
 pre{
     font-family: "Nanum Gothic";
     font-weight: bold;
+    white-space: pre-wrap;
 }
 
 
