@@ -157,11 +157,28 @@ function ApplyResultValues(){
 
 function createMathJaxObj(e, text = ""){
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, e]);
-    if (text != ""){
+    if (text != ""){ 
         e.addEventListener("click", (e) => {
             navigator.clipboard.writeText(text).then(e => {
-                console.log("copied! (" + text + ")");
+                //console.log("copied! (" + text + ")");
+                alert("copied! (" + text + ")");
             })
         })
     }
+}
+
+/////////
+// URL
+let urlParam = new URLSearchParams(window.location.search).get('data');
+console.log(JSON.parse(urlParam));
+
+function shareWithURL(){
+    let resultURL = "";
+    let resultDict = {};
+        
+     document.querySelectorAll("input[type=number]").forEach(e => {
+         resultDict[e.id] = e.value;
+     });
+    
+    console.log(JSON.stringify(resultDict));
 }
