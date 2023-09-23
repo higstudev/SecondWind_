@@ -57,6 +57,10 @@
     "GP1":{
         "w1":[
             [
+                
+            ],
+            
+            [
                 [{"type": "const", "value": " "}, {"type": "const", "value": "각가속도(1/s^2)"}, {"type": "const", "value": "관성모멘트(kg*m^2)"}, {"type": "const", "value": "평균 관성모멘트 (kg*m^2)"}],
 
 		[{"type": "const", "value": "1"}, {"type": "input", "value": ""}, {"type": "input", "value": ""}, {"type": "result", "value": "(a_i_1 + a_i_2)/2"}],
