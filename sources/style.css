@@ -188,6 +188,7 @@ input{
     width: 80%;
     
 	text-align: right;
+    font-size: 1em;
 	
 	border: 0px;
     border-bottom: solid 1px;
@@ -201,4 +202,9 @@ h1{
 
 p{
     font-size: 1.15em;
+}
+
+img {
+	height: 100px;
+	width: 100px;
 }

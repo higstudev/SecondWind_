@@ -18,9 +18,6 @@ fetch("./data_table.json")
     console.log(JSON.parse(text));
     json_table = JSON.parse(text);
 })
-.then(() => {
-    openFile("GC1", 1);
-})
 .catch((e) => console.error(e));
 
 // let par_tables = document.getElementById("par_tables");
@@ -83,9 +80,10 @@ function make_paragraph(subject, week){
     let data = json_paragraph[subject][week];
     for (let i = 0; i < data.length; i++){
         let parag = document.createElement("p");
-        //parag.innerHTML = "\\[R= \\frac{1}{\\mu} \\sqrt[3]{\\frac{NM}{dN_A}} \\]";
-        parag.innerHTML = data[i];
         p1body.appendChild(parag);
+        parag.innerHTML = data[i];
+        if (data[i][0] == "\\") MathJax.Hub.Queue(["Typeset", MathJax.Hub, parag]);
+        //parag.innerHTML = "\\[R= \\frac{1}{\\mu} \\sqrt[3]{\\frac{NM}{dN_A}} \\]";
     }
     
     p1.appendChild(p1header);
@@ -116,7 +114,7 @@ function make_table(subject, week, index){
                     
                 case "input":
                     let input = document.createElement("input");
-                    input.type = "text";
+                    input.type = "number";
                     input.value = 1;
                     ApplyValue2Scope(index, i, j, 1);
                     input.addEventListener("change", (e) => {
