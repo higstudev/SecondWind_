@@ -28,6 +28,14 @@ fetch("./data_table.json")
 let scope = [];
 let code = [];
 let resultCells = [];
+let currentSubject = "";
+let currentWeek = 1;
+
+function openIntro(){
+	document.querySelector("#intro_menu").style.display = "block";
+	document.querySelector("#first").style.display = "none";
+	document.querySelector("#second").style.display = "none";
+}
 
 function changeSubject(subject){
 	document.querySelectorAll(".weeks").forEach((e) => {
@@ -39,6 +47,12 @@ function changeSubject(subject){
 }
 
 function openFile(subject, week){
+    currentSubject = subject;
+    currentWeek = week;
+	document.querySelector("#intro_menu").style.display = "none";
+	document.querySelector("#first").style.display = "block";
+	document.querySelector("#second").style.display = "block";
+	document.querySelectorAll("#"+subject)[week-1].style.backgroundColor = "red";
     week = "w" + week;
     
     p1.innerHTML = "";
@@ -112,6 +126,7 @@ function make_table(subject, week, index){
                 case "input":
                     let input = document.createElement("input");
                     input.type = "number";
+                    input.id = "input_" + i + "_" + j;
                     input.value = 1;
                     ApplyValue2Scope(index, i, j, 1);
                     input.addEventListener("change", (e) => {
@@ -157,7 +172,19 @@ function ApplyResultValues(){
 
 function createMathJaxObj(e, text = ""){
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, e]);
-    if (text != ""){ 
+    if (text != ""){
+        
+        
+        let copyspan = document.createElement("span");
+        let copyimg  = document.createElement("img");
+        copyimg.src = "./source/copy.png";
+        copyspan.appendChild(copyimg);
+        e.appendChild(copyimg);
+        console.log(e);
+        console.log(e.children);
+        console.log(e.children[1]);
+        console.log(e.children[1].children);
+        
         e.addEventListener("click", (e) => {
             navigator.clipboard.writeText(text).then(e => {
                 //console.log("copied! (" + text + ")");
@@ -167,18 +194,29 @@ function createMathJaxObj(e, text = ""){
     }
 }
 
+/*
+
 /////////
 // URL
-let urlParam = new URLSearchParams(window.location.search).get('data');
-console.log(JSON.parse(urlParam));
 
-function shareWithURL(){
-    let resultURL = "";
-    let resultDict = {};
-        
-     document.querySelectorAll("input[type=number]").forEach(e => {
-         resultDict[e.id] = e.value;
-     });
-    
-    console.log(JSON.stringify(resultDict));
+let URL_LOCATION = "https://secondwind--mijkl.run.goorm.site/";
+
+let FileParam = new URLSearchParams(window.location.search).get('file');
+let DataParam = new URLSearchParams(window.location.search).get('data');
+if (FileParam != null && json_table[FileParam] != null){
+    openFile(FileParam.split("_")[0], FileParam.split("_")[1]);
+    document.querySelectorAll("input[type=number]").forEach(e => {
+        let dict = JSON.parse(DataParam);
+        e.value = dict[e.id];
+    });
+    ApplyResultValues();
 }
+function shareWithURL(){
+    let resultDict = {};
+    document.querySelectorAll("input[type=number]").forEach(e => {
+        resultDict[e.id] = e.value;
+    });
+    console.log(URL_LOCATION + "?file=" +  currentSubject + "_" + currentWeek + "&data=" + JSON.stringify(resultDict));
+}
+
+*/          

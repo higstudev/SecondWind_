@@ -27,7 +27,7 @@ element {
 	width: 16vw;
 	
 	border-style: solid;
-	border-width: 2px;
+	border-width: 1px;
 	border-color: black;
 	border-radius: 0px;
 	
@@ -51,12 +51,23 @@ element {
 	
 	border-style: solid;
 	border-width: 0px;
-	border-right-width: 2px;
+	border-right-width: 1px;
 	border-color: black;
 	
-	margin-left: -2px;
+	margin-left: 0px;
 	
-	background-color: w;
+	background-color: white;
+}
+
+/*로고*/
+#logo {
+	position: absolute;
+	bottom: 0%;
+	
+	width: 16%;
+	height: auto;
+	
+	cursor: pointer;
 }
 
 /*강의 제목*/
@@ -68,29 +79,22 @@ element {
 	
 	height: 2.2em;
 	
-	border-bottom-width: 2px;
+	border-bottom-width: 1px;
 	
 	font-size: 1.5em;
 	font-weight: bold;
 }
 
-/*n학년 제목*/
-.title_semester {
-    display: flex;
-	
-    justify-content: center;
-    align-items: center;
+.description {
+    text-align: center;
 	
 	height: 1.5em;
-	
 	margin: 0px;
 	
-	font-family: sans-serif;
+	font-family: "Nanum Gothic";
 	font-size: 1.2em;
-	font-weight: bold;
 	
 	color: black;
-	background-color: white;
 }
 
 /*n주차 제목*/
@@ -139,12 +143,12 @@ ul li {
 	width: 100%;
 	
 	border-style: solid;
-	border-width: 2px;
+	border-width: 1px;
 	border-color: black;
 	border-radius: 0px;
 	
-	margin-top: -2px;
-	margin-left: -2px;
+	margin-top: -1px;
+	margin-left: -1px;
 	
 	padding-left: 0px;
 	
@@ -157,12 +161,13 @@ ul li {
 
 /*리스트 요소 호버 효과*/
 ul li:hover {
-	background-color: lightgray;
+	background-color: #ced4da;
 }
 
 /*리스트 요소 클릭 효과*/
 ul li:active {
-	background-color: gray;
+	color: white;
+	background-color: #868e96;
 }
 
 /*n주차 선택 리스트*/
@@ -204,12 +209,6 @@ p{
     font-size: 1.15em;
 }
 
-img {
-	position: absolute;
-	bottom: 0%;
-	
-	width: 16%;
-	height: auto;
-	
-	cursor: pointer;
-}
+
+
+

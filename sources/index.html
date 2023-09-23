@@ -12,7 +12,7 @@
     <body style="margin: 0px; overflow: hidden">
 		<div id="left_menu">
 			<ul style="overflow-x:hidden; overflow-y:auto">
-				<li class="title_lecture" onclick="changeSubject('GC1')">일반화학실험I</li>
+				<li class="title_lecture" onclick="changeSubject('GC1')">일반화학실험 I</li>
 				<ul class="weeks" id="GC1">
 					<li onclick="openFile('GC1', 1)">1주차</li>
 					<li onclick="openFile('GC1', 2)">2주차</li>
@@ -31,7 +31,7 @@
 					<li onclick="openFile('GC1', 15)">15주차</li>
 					<li onclick="openFile('GC1', 16)">16주차</li>
 				</ul>
-				<li class="title_lecture" onclick="changeSubject('GC2')">일반화학실험II</li>
+				<li class="title_lecture" onclick="changeSubject('GC2')">일반화학실험 II</li>
 				<ul class="weeks" id="GC2">
 					<li onclick="openFile('GC2', 1)">1주차</li>
 					<li onclick="openFile('GC2', 2)">2주차</li>
@@ -50,7 +50,7 @@
 					<li onclick="openFile('GC2', 15)">15주차</li>
 					<li onclick="openFile('GC2', 16)">16주차</li>
 				</ul>
-				<li class="title_lecture" onclick="changeSubject('GB1')">일반생명실험I</li>
+				<li class="title_lecture" onclick="changeSubject('GB1')">일반생명실험 I</li>
 				<ul class="weeks" id="GB1">
 					<li onclick="openFile('GB1', 1)">1주차</li>
 					<li onclick="openFile('GB1', 2)">2주차</li>
@@ -69,7 +69,7 @@
 					<li onclick="openFile('GB1', 15)">15주차</li>
 					<li onclick="openFile('GB1', 16)">16주차</li>
 				</ul>
-				<li class="title_lecture" onclick="changeSubject('GB2')">일반생명실험II</li>
+				<li class="title_lecture" onclick="changeSubject('GB2')">일반생명실험 II</li>
 				<ul class="weeks" id="GB2">
 					<li onclick="openFile('GB2', 1)">1주차</li>
 					<li onclick="openFile('GB2', 2)">2주차</li>
@@ -88,7 +88,7 @@
 					<li onclick="openFile('GB2', 15)">15주차</li>
 					<li onclick="openFile('GB2', 16)">16주차</li>
 				</ul>
-				<li class="title_lecture" onclick="changeSubject('GP1')">일반물리실험I</li>
+				<li class="title_lecture" onclick="changeSubject('GP1')">일반물리실험 I</li>
 				<ul class="weeks" id="GP1">
 					<li onclick="openFile('GP1', 1)">1주차</li>
 					<li onclick="openFile('GP1', 2)">2주차</li>
@@ -107,7 +107,7 @@
 					<li onclick="openFile('GP1', 15)">15주차</li>
 					<li onclick="openFile('GP1', 16)">16주차</li>
 				</ul>
-				<li class="title_lecture" onclick="changeSubject('GP2')">일반물리실험II</li>
+				<li class="title_lecture" onclick="changeSubject('GP2')">일반물리실험 II</li>
 				<ul class="weeks" id="GP2">
 					<li onclick="openFile('GP2', 1)">1주차</li>
 					<li onclick="openFile('GP2', 2)">2주차</li>
@@ -127,11 +127,15 @@
 					<li onclick="openFile('GP2', 16)">16주차</li>
 				</ul>
 			</ul>
-			<img src="source/logo.jpg"/>
+			<img src="source/logo.jpg" id="logo" onclick="openIntro()"/>
 		</div>
 		<div id="center_menu" style="overflow:auto">
-			<div id="intro_menu">	
-				<img src="source/sans.png"/>
+			<div id="intro_menu">
+				<h1 style="text-align: center">실험 도우미 1.0</h1>
+				<p class="description">
+					실험을 진행하며, 측정 값을 입력하면 결과값이 바로 계산되어 이론값과 쉽게 비교할 수 있습니다.<br>
+					좌측에서 원하시는 과목과 진도를 선택하십시오.<br>
+				</p>
 			</div>
 			<div id="first"></div>
             <div id="second"></div>
