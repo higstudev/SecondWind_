@@ -24,7 +24,7 @@ element {
 	float: left;
 	
 	height: 100vh;
-	width: 16vw;
+	width: 12vw;
 	
 	border-style: solid;
 	border-width: 1px;
@@ -47,7 +47,7 @@ element {
 	display: inline-block;
 	
 	height: 100vh;
-	width: 63vw;
+	width: 76vw;
 	
 	border-style: solid;
 	border-width: 0px;
@@ -56,7 +56,12 @@ element {
 	
 	margin-left: 0px;
 	
-	background-color: white;
+	background-color: #f1f3f5;
+}
+
+#right_menu {
+	height: 100vh;
+	width: auto;
 }
 
 /*로고*/
@@ -64,7 +69,7 @@ element {
 	position: absolute;
 	bottom: 0%;
 	
-	width: 16%;
+	width: 12vw;
 	height: auto;
 	
 	cursor: pointer;
@@ -161,17 +166,24 @@ ul li {
 
 /*리스트 요소 호버 효과*/
 ul li:hover {
-	background-color: #ced4da;
+	background-color: #ced4da !important;
 }
 
 /*리스트 요소 클릭 효과*/
 ul li:active {
 	color: white;
-	background-color: #868e96;
+	background-color: #868e96 !important;
 }
 
 /*n주차 선택 리스트*/
 ul ul li {
+    display: flex;
+	
+    justify-content: center;
+    align-items: center;
+	
+	height: 1.6em;
+	
 	font-size: 1em;
 }
 
@@ -183,9 +195,10 @@ table, td, th {
 }
 
 table{
-    width: calc(100% - 20px);
-    
+    width: calc(100% - 20px - 3em);
 	margin: 10px;
+    margin-left: 3em;
+    margin-right: 3em;
 }
 
 
@@ -206,9 +219,12 @@ h1{
 }
 
 p{
-    font-size: 1.15em;
+    font-size: 1em;
 }
 
-
+pre{
+    font-family: "Nanum Gothic";
+    font-weight: bold;
+}
 
 

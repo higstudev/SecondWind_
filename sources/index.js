@@ -49,11 +49,21 @@ function changeSubject(subject){
 function openFile(subject, week){
     currentSubject = subject;
     currentWeek = week;
+	
+	//change the visibility of the week menu
 	document.querySelector("#intro_menu").style.display = "none";
 	document.querySelector("#first").style.display = "block";
 	document.querySelector("#second").style.display = "block";
-	document.querySelectorAll("#"+subject)[week-1].style.backgroundColor = "red";
-    week = "w" + week;
+	
+	//change the color of selected items
+	document.querySelectorAll("ul li").forEach((e) => {
+		e.style.backgroundColor = "white";
+    });
+	document.querySelector("#"+subject).childNodes[week * 2 - 1].style.backgroundColor = "#ced4da";
+    
+	
+	
+	week = "w" + week;
     
     p1.innerHTML = "";
     p2.innerHTML = "";
@@ -78,8 +88,6 @@ function openFile(subject, week){
 let p1 = document.getElementById("first"); // 개요
 let p2 = document.getElementById("second"); // 테이블
 let p3 = document.getElementById("third"); // 실험과정
-let p4 = document.getElementById("fourth"); // 기타
-
 
 // p1 만들기
 function make_paragraph(subject, week){
@@ -89,10 +97,35 @@ function make_paragraph(subject, week){
     p1body.className = "paragraph_body";
     let data = json_paragraph[subject][week];
     for (let i = 0; i < data.length; i++){
-        let parag = document.createElement("p");
-        p1body.appendChild(parag);
-        parag.innerHTML = data[i];
-        if (data[i][0] == "\\") createMathJaxObj(parag, data[i]);
+        if (data[i][0] == "\\" && data[i][1] == "[") {
+            let parag = document.createElement("p");
+            p1body.appendChild(parag);
+            parag.innerHTML = data[i];
+            let parent = document.createElement("span");
+            parent.width = "100%";
+            parent.style.display = "flex";
+            parent.style.justifyContent = "center";
+            parent.style.alignItems = "center";
+            let img = document.createElement("img");
+            img.src = "./source/copy.png";
+            img.style.height = "1.15em";
+            img.style.float = "right";
+			img.style.marginLeft = "20px";
+			img.style.cursor = "pointer";
+            img.addEventListener("click", e => {
+                navigator.clipboard.writeText(data[i]);
+                alert("LaTeX Copied!\n");
+            })
+            parent.appendChild(parag);
+            parent.appendChild(img);
+            p1body.appendChild(parent);
+            createMathJaxObj(parag, data[i]);
+        }
+        else{
+            let parag = document.createElement("pre");
+            p1body.appendChild(parag);
+            parag.innerHTML = data[i];
+        }
         //parag.innerHTML = "\\[R= \\frac{1}{\\mu} \\sqrt[3]{\\frac{NM}{dN_A}} \\]";
     }
     
@@ -172,26 +205,6 @@ function ApplyResultValues(){
 
 function createMathJaxObj(e, text = ""){
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, e]);
-    if (text != ""){
-        
-        
-        let copyspan = document.createElement("span");
-        let copyimg  = document.createElement("img");
-        copyimg.src = "./source/copy.png";
-        copyspan.appendChild(copyimg);
-        e.appendChild(copyimg);
-        console.log(e);
-        console.log(e.children);
-        console.log(e.children[1]);
-        console.log(e.children[1].children);
-        
-        e.addEventListener("click", (e) => {
-            navigator.clipboard.writeText(text).then(e => {
-                //console.log("copied! (" + text + ")");
-                alert("copied! (" + text + ")");
-            })
-        })
-    }
 }
 
 /*
@@ -220,3 +233,14 @@ function shareWithURL(){
 }
 
 */          
+
+// p3 만들기
+
+function make_third(subject, week){
+    let p3header = document.createElement("h1");
+    p3header.innerHTML = "1. 개요";
+    let p3body = document.createElement("div");
+    p3body.className = "paragraph_body";
+    p3.appendChild(p3header);
+    p3.appendChild(p3body);
+}
