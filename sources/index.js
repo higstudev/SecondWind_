@@ -33,7 +33,7 @@ fetch("./data_procedure.json")
 //     tables.push(table);
 // }
 
-let scope = [];
+let scope = {};
 let code = [];
 let resultCells = [];
 let currentSubject = "";
@@ -56,6 +56,12 @@ function changeSubject(subject){
 }
 
 function openFile(subject, week){
+    if (!(subject in json_procedure && ("w" + week) in json_procedure[subject])){
+        console.log("no subject");
+        subject = "GC1";
+        week = 1;
+    }
+    
     currentSubject = subject;
     currentWeek = week;
 	
@@ -83,7 +89,7 @@ function openFile(subject, week){
     p2header.innerHTML = "2. 데이터 테이블";
     p2.appendChild(p2header);
 
-    scope = [];
+    scope = {};
     code = [];
     resultCells = [];
     
@@ -124,7 +130,7 @@ function make_paragraph(subject, week){
 			img.style.marginLeft = "20px";
 			img.style.cursor = "pointer";
             img.addEventListener("click", e => {
-                navigator.clipboard.writeText(data[i]);
+                navigator.clipboard.writeText(data[i].substring(2, data[i].length - 2));
                 alert("LaTeX Copied!\n");
             })
             parent.appendChild(parag);
@@ -149,10 +155,16 @@ let value_applied_event = new Event("value_applied");
 
 // 2차원 배열이 주어졌다고 가정
 function make_table(subject, week, index){
-    scope[index] = { };
     code[index] = [];
     let data = json_table[subject][week][index];
     let table = document.createElement("table");
+    
+    if (data[0].length <= 3){
+        table.style.width = "calc(100% - 40em)";
+        table.style.marginLeft = "20em";
+        table.style.right = "20em";
+    }
+    
     for (let i = 0; i < data.length; i++){
         code[index][i] = [];
         let tr = document.createElement("tr");
@@ -188,7 +200,7 @@ function make_table(subject, week, index){
                     code[index][i][j] = math.compile(data[i][j]["value"].replaceAll("_i", "_" + i).replaceAll("_j", "_" + j));
                     resultCells.push(td);
                     td.addEventListener("value_applied", (e) => {
-                        td.innerHTML = (code[index][i][j].evaluate(scope[index])).toPrecision(4);
+                        td.innerHTML = (code[index][i][j].evaluate(scope)).toPrecision(4);
                         ApplyValue2Scope(index, i, j, td.innerHTML);
                     });
                     break;
@@ -205,7 +217,7 @@ function make_table(subject, week, index){
 }
 
 function ApplyValue2Scope(index, i, j, value){
-    scope[index]["a_" + i + "_" + j] = parseFloat(value);
+    scope[String.fromCharCode(index + 97) + "_" + i + "_" + j] = parseFloat(value);
 }
 
 function ApplyResultValues(){
