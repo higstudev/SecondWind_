@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+    <head>
+		<link href="style.css" type="text/css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.js"></script>
+        <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="./index.js" defer></script>
+	</head>
+    <body style="margin: 0px; overflow: hidden">
+		<div id="left_menu">
+			<ul style="overflow-x:hidden; overflow-y:scroll">
+				<li class="title_lecture" onclick="changeSubject('GC1')">일반화학실험I</li>
+				<ul class="weeks" id="GC1">
+					<li onclick="openFile('GC1', 1)">1주차</li>
+					<li onclick="openFile('GC1', 2)">2주차</li>
+					<li onclick="openFile('GC1', 3)">3주차</li>
+					<li onclick="openFile('GC1', 4)">4주차</li>
+					<li onclick="openFile('GC1', 5)">5주차</li>
+					<li onclick="openFile('GC1', 6)">6주차</li>
+					<li onclick="openFile('GC1', 7)">7주차</li>
+					<li onclick="openFile('GC1', 8)">8주차</li>
+					<li onclick="openFile('GC1', 9)">9주차</li>
+					<li onclick="openFile('GC1', 10)">10주차</li>
+					<li onclick="openFile('GC1', 11)">11주차</li>
+					<li onclick="openFile('GC1', 12)">12주차</li>
+					<li onclick="openFile('GC1', 13)">13주차</li>
+					<li onclick="openFile('GC1', 14)">14주차</li>
+					<li onclick="openFile('GC1', 15)">15주차</li>
+					<li onclick="openFile('GC1', 16)">16주차</li>
+				</ul>
+				<li class="title_lecture" onclick="changeSubject('GC2')">일반화학실험II</li>
+				<ul class="weeks" id="GC2">
+					<li onclick="openFile('GC2', 1)">1주차</li>
+					<li onclick="openFile('GC2', 2)">2주차</li>
+					<li onclick="openFile('GC2', 3)">3주차</li>
+					<li onclick="openFile('GC2', 4)">4주차</li>
+					<li onclick="openFile('GC2', 5)">5주차</li>
+					<li onclick="openFile('GC2', 6)">6주차</li>
+					<li onclick="openFile('GC2', 7)">7주차</li>
+					<li onclick="openFile('GC2', 8)">8주차</li>
+					<li onclick="openFile('GC2', 9)">9주차</li>
+					<li onclick="openFile('GC2', 10)">10주차</li>
+					<li onclick="openFile('GC2', 11)">11주차</li>
+					<li onclick="openFile('GC2', 12)">12주차</li>
+					<li onclick="openFile('GC2', 13)">13주차</li>
+					<li onclick="openFile('GC2', 14)">14주차</li>
+					<li onclick="openFile('GC2', 15)">15주차</li>
+					<li onclick="openFile('GC2', 16)">16주차</li>
+				</ul>
+				<li class="title_lecture" onclick="changeSubject('GB1')">일반생명실험I</li>
+				<ul class="weeks" id="GB1">
+					<li onclick="openFile('GB1', 1)">1주차</li>
+					<li onclick="openFile('GB1', 2)">2주차</li>
+					<li onclick="openFile('GB1', 3)">3주차</li>
+					<li onclick="openFile('GB1', 4)">4주차</li>
+					<li onclick="openFile('GB1', 5)">5주차</li>
+					<li onclick="openFile('GB1', 6)">6주차</li>
+					<li onclick="openFile('GB1', 7)">7주차</li>
+					<li onclick="openFile('GB1', 8)">8주차</li>
+					<li onclick="openFile('GB1', 9)">9주차</li>
+					<li onclick="openFile('GB1', 10)">10주차</li>
+					<li onclick="openFile('GB1', 11)">11주차</li>
+					<li onclick="openFile('GB1', 12)">12주차</li>
+					<li onclick="openFile('GB1', 13)">13주차</li>
+					<li onclick="openFile('GB1', 14)">14주차</li>
+					<li onclick="openFile('GB1', 15)">15주차</li>
+					<li onclick="openFile('GB1', 16)">16주차</li>
+				</ul>
+				<li class="title_lecture" onclick="changeSubject('GB2')">일반생명실험II</li>
+				<ul class="weeks" id="GB2">
+					<li onclick="openFile('GB2', 1)">1주차</li>
+					<li onclick="openFile('GB2', 2)">2주차</li>
+					<li onclick="openFile('GB2', 3)">3주차</li>
+					<li onclick="openFile('GB2', 4)">4주차</li>
+					<li onclick="openFile('GB2', 5)">5주차</li>
+					<li onclick="openFile('GB2', 6)">6주차</li>
+					<li onclick="openFile('GB2', 7)">7주차</li>
+					<li onclick="openFile('GB2', 8)">8주차</li>
+					<li onclick="openFile('GB2', 9)">9주차</li>
+					<li onclick="openFile('GB2', 10)">10주차</li>
+					<li onclick="openFile('GB2', 11)">11주차</li>
+					<li onclick="openFile('GB2', 12)">12주차</li>
+					<li onclick="openFile('GB2', 13)">13주차</li>
+					<li onclick="openFile('GB2', 14)">14주차</li>
+					<li onclick="openFile('GB2', 15)">15주차</li>
+					<li onclick="openFile('GB2', 16)">16주차</li>
+				</ul>
+				<li class="title_lecture" onclick="changeSubject('GP1')">일반물리실험I</li>
+				<ul class="weeks" id="GP1">
+					<li onclick="openFile('GP1', 1)">1주차</li>
+					<li onclick="openFile('GP1', 2)">2주차</li>
+					<li onclick="openFile('GP1', 3)">3주차</li>
+					<li onclick="openFile('GP1', 4)">4주차</li>
+					<li onclick="openFile('GP1', 5)">5주차</li>
+					<li onclick="openFile('GP1', 6)">6주차</li>
+					<li onclick="openFile('GP1', 7)">7주차</li>
+					<li onclick="openFile('GP1', 8)">8주차</li>
+					<li onclick="openFile('GP1', 9)">9주차</li>
+					<li onclick="openFile('GP1', 10)">10주차</li>
+					<li onclick="openFile('GP1', 11)">11주차</li>
+					<li onclick="openFile('GP1', 12)">12주차</li>
+					<li onclick="openFile('GP1', 13)">13주차</li>
+					<li onclick="openFile('GP1', 14)">14주차</li>
+					<li onclick="openFile('GP1', 15)">15주차</li>
+					<li onclick="openFile('GP1', 16)">16주차</li>
+				</ul>
+				<li class="title_lecture" onclick="changeSubject('GP2')">일반물리실험II</li>
+				<ul class="weeks" id="GP2">
+					<li onclick="openFile('GP2', 1)">1주차</li>
+					<li onclick="openFile('GP2', 2)">2주차</li>
+					<li onclick="openFile('GP2', 3)">3주차</li>
+					<li onclick="openFile('GP2', 4)">4주차</li>
+					<li onclick="openFile('GP2', 5)">5주차</li>
+					<li onclick="openFile('GP2', 6)">6주차</li>
+					<li onclick="openFile('GP2', 7)">7주차</li>
+					<li onclick="openFile('GP2', 8)">8주차</li>
+					<li onclick="openFile('GP2', 9)">9주차</li>
+					<li onclick="openFile('GP2', 10)">10주차</li>
+					<li onclick="openFile('GP2', 11)">11주차</li>
+					<li onclick="openFile('GP2', 12)">12주차</li>
+					<li onclick="openFile('GP2', 13)">13주차</li>
+					<li onclick="openFile('GP2', 14)">14주차</li>
+					<li onclick="openFile('GP2', 15)">15주차</li>
+					<li onclick="openFile('GP2', 16)">16주차</li>
+				</ul>
+			</ul>
+		</div>
+		<div id="center_menu" style="overflow:scroll">
+			<div id="first">
+                <div>
+                    <p>
+                        \[ R = \frac{1}{\mu} \]
+                    </p>
+                </div>
+            </div>
+            <div id="second">
+
+            </div>
+		</div>
+		<div>
+			
+		</div>
+	</body>
+</html>
