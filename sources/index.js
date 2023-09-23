@@ -5,8 +5,6 @@ let json_paragraph;
 fetch("./data_paragraph.json")
 .then((res) => res.text())
 .then((text) => {
-    console.log(text);
-    console.log(JSON.parse(text));
     json_paragraph = JSON.parse(text);
 })
 .catch((e) => console.error(e));
@@ -14,8 +12,6 @@ fetch("./data_paragraph.json")
 fetch("./data_table.json")
 .then((res) => res.text())
 .then((text) => {
-    console.log(text);
-    console.log(JSON.parse(text));
     json_table = JSON.parse(text);
 })
 .catch((e) => console.error(e));
@@ -82,7 +78,7 @@ function make_paragraph(subject, week){
         let parag = document.createElement("p");
         p1body.appendChild(parag);
         parag.innerHTML = data[i];
-        if (data[i][0] == "\\") MathJax.Hub.Queue(["Typeset", MathJax.Hub, parag]);
+        if (data[i][0] == "\\") createMathJaxObj(parag, data[i]);
         //parag.innerHTML = "\\[R= \\frac{1}{\\mu} \\sqrt[3]{\\frac{NM}{dN_A}} \\]";
     }
     
@@ -102,13 +98,14 @@ function make_table(subject, week, index){
     for (let i = 0; i < data.length; i++){
         code[index][i] = [];
         let tr = document.createElement("tr");
-        console.log("1");
         for (let j = 0; j < data[i].length; j++){
             let td = document.createElement("td");
             switch(data[i][j]["type"]){
                 case "const":
                     td.innerHTML = data[i][j]["value"];
                     td.className = "constcell";
+                    
+                    if (data[i][j]["value"][0] == "\\") createMathJaxObj(td);
                     ApplyValue2Scope(index, i, j, data[i][j]["value"]);
                     break;
                     
@@ -132,7 +129,6 @@ function make_table(subject, week, index){
                     code[index][i][j] = math.compile(data[i][j]["value"].replaceAll("_i", "_" + i).replaceAll("_j", "_" + j));
                     resultCells.push(td);
                     td.addEventListener("value_applied", (e) => {
-                        console.log(td.innerHTML);
                         td.innerHTML = (code[index][i][j].evaluate(scope[index])).toPrecision(4);
                         ApplyValue2Scope(index, i, j, td.innerHTML);
                     });
@@ -156,5 +152,16 @@ function ApplyValue2Scope(index, i, j, value){
 function ApplyResultValues(){
     for (let i = 0; i < resultCells.length; i++){
         resultCells[i].dispatchEvent(value_applied_event);
+    }
+}
+
+function createMathJaxObj(e, text = ""){
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, e]);
+    if (text != ""){
+        e.addEventListener("click", (e) => {
+            navigator.clipboard.writeText(text).then(e => {
+                console.log("copied! (" + text + ")");
+            })
+        })
     }
 }
