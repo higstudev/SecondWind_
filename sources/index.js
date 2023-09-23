@@ -43,6 +43,7 @@ function openIntro(){
 	document.querySelector("#intro_menu").style.display = "block";
 	document.querySelector("#first").style.display = "none";
 	document.querySelector("#second").style.display = "none";
+    document.querySelector("#third").style.display = "none";
 }
 
 function changeSubject(subject){
@@ -62,6 +63,7 @@ function openFile(subject, week){
 	document.querySelector("#intro_menu").style.display = "none";
 	document.querySelector("#first").style.display = "block";
 	document.querySelector("#second").style.display = "block";
+    document.querySelector("#third").style.display = "block";
 	
 	//change the color of selected items
 	document.querySelectorAll("ul li").forEach((e) => {
@@ -75,7 +77,7 @@ function openFile(subject, week){
     
     p1.innerHTML = "";
     p2.innerHTML = "";
-    //p3.innerHTML = "";
+    p3.innerHTML = "";
     
     let p2header = document.createElement("h1");
     p2header.innerHTML = "2. 데이터 테이블";
@@ -256,6 +258,6 @@ function make_third(subject, week){
     for (let i = 0; i < data.length; i++){
         let parag = document.createElement("pre");
         p3body.appendChild(parag);
-        parag.innerHTML = data[i];
+        parag.innerHTML = (i + 1) + ".  " + data[i];
     }
 }

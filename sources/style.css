@@ -125,7 +125,7 @@ element {
 }
 
 .paragraph_body{
-    margin-left: 3em;
+    margin-left: 4.5em;
     margin-right: 3em;
 }
 
@@ -198,8 +198,8 @@ table, td, th {
 }
 
 table{
-    width: calc(100% - 6em);
-    margin-left: 3em;
+    width: calc(100% - 7.5em);
+    margin-left: 4.5em;
     margin-right: 3em;
     margin-top: 2em;
     margin-bottom: 2em;
@@ -231,6 +231,9 @@ pre{
     font-family: "Nanum Gothic";
     font-weight: bold;
     white-space: pre-wrap;
+    font-size: 1.1em;
 }
 
-
+#third{
+    margin-bottom: 3em;
+}
