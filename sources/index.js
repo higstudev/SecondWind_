@@ -24,15 +24,6 @@ fetch("./data_procedure.json")
 })
 .catch((e) => console.error(e));
 
-// let par_tables = document.getElementById("par_tables");
-// let tables = [];
-
-// for (let i = 0; i < json.length; i++){
-//     let table = document.createElement("table"); // 
-//     par_tables.appendChild(table);
-//     tables.push(table);
-// }
-
 let scope = {};
 let code = [];
 let resultCells = [];
@@ -245,33 +236,6 @@ function ApplyResultValues(){
 function createMathJaxObj(e, text = ""){
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, e]);
 }
-
-/*
-
-/////////
-// URL
-
-let URL_LOCATION = "https://secondwind--mijkl.run.goorm.site/";
-
-let FileParam = new URLSearchParams(window.location.search).get('file');
-let DataParam = new URLSearchParams(window.location.search).get('data');
-if (FileParam != null && json_table[FileParam] != null){
-    openFile(FileParam.split("_")[0], FileParam.split("_")[1]);
-    document.querySelectorAll("input[type=number]").forEach(e => {
-        let dict = JSON.parse(DataParam);
-        e.value = dict[e.id];
-    });
-    ApplyResultValues();
-}
-function shareWithURL(){
-    let resultDict = {};
-    document.querySelectorAll("input[type=number]").forEach(e => {
-        resultDict[e.id] = e.value;
-    });
-    console.log(URL_LOCATION + "?file=" +  currentSubject + "_" + currentWeek + "&data=" + JSON.stringify(resultDict));
-}
-
-*/          
 
 // p3 만들기
 
