@@ -203,8 +203,7 @@ table{
     width: calc(100% - 9em);
     margin-left: 4.5em;
     margin-right: 4.5em;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 2em; 
 }
 
 
@@ -221,9 +220,7 @@ input{
 }
 
 h1{
-    margin-left: 1.2em;
-    margin-right: 1.2em;
-    margin-top: 1.2em;
+    margin: 1.2em;
 }
 
 p{

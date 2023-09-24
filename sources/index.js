@@ -85,8 +85,24 @@ function openFile(subject, week){
     p2.innerHTML = "";
     p3.innerHTML = "";
     
-    let p2header = document.createElement("h1");
-    p2header.innerHTML = "2. 데이터 테이블";
+    let p2header = document.createElement("span");
+    p2header.width = "100%";
+    p2header.style.display = "flex";
+    let p2text = document.createElement("h1");    
+    p2text.innerHTML = "2. 데이터 테이블";
+    
+    let img = document.createElement("img");
+    img.src = "./source/copy.png";
+    img.style.height = "1.25em";
+    img.style.float = "right";
+    img.style.marginLeft = "20px";
+    img.style.cursor = "pointer";
+    img.addEventListener("click", e => {
+        expt();
+    })
+    p2header.style.alignItems = "center";
+    p2header.appendChild(p2text);
+    p2header.appendChild(img);
     p2.appendChild(p2header);
 
     scope = {};
@@ -273,3 +289,58 @@ function make_third(subject, week){
         parag.innerHTML = (i + 1) + ".  " + data[i];
     }
 }
+
+/// csv output
+
+function expt(){
+    let tableElements = document.querySelectorAll("table");
+    let maxRow = 0;
+    let csv = "";
+    
+    tableElements.forEach(row => {
+        console.log(row.childNodes);
+        if (maxRow < row.childNodes[0].childNodes.length) maxRow = row.childNodes[0].childNodes.length;
+    });
+    for (let r = 0; r < tableElements.length; r++){
+        let row = tableElements[r];
+        for (let i = 0; i < row.childNodes.length + 1; i++){
+            for (let j = 0; j < maxRow; j++){
+                if (i < row.childNodes.length && j < row.childNodes[0].childNodes.length){
+                    switch(json_table[currentSubject]["w" + currentWeek][r][i][j]["type"]){
+                        case "const":
+                            csv += json_table[currentSubject]["w" + currentWeek][r][i][j]["value"];
+                            break;
+                            
+                        case "input":
+                            csv += row.childNodes[i].childNodes[j].childNodes[0].value;
+                            break;
+                            
+                        case "result":
+                            csv += row.childNodes[i].childNodes[j].innerHTML;
+                            break;
+                    }
+                }
+                csv += ",";
+            }
+            csv += "\n";
+        }
+    }
+    var blob = new Blob(["\ufeff" + csv], { type: 'text/csv' });
+    if (navigator.msSaveBlob) { // IE 10+
+        navigator.msSaveBlob(blob, filename);
+    }
+    else {
+        var link = document.createElement("a");
+        if (link.download !== undefined) { // feature detection
+            // Browsers that support HTML5 download attribute
+            var url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "csv_output.csv");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+}
+
